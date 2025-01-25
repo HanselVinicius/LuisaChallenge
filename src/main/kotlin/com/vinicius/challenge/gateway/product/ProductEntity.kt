@@ -1,6 +1,6 @@
 package com.vinicius.challenge.gateway.product
 
-import com.vinicius.challenge.gateway.client.entity.FavoriteListEntity
+import com.vinicius.challenge.gateway.client.favorite.entity.FavoriteListEntity
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType

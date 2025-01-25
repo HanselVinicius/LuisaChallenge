@@ -1,8 +1,8 @@
 package com.vinicius.challenge.entrypoint.auth
 
-import com.vinicius.challenge.core.application.client.factory.ClientFactory
 import com.vinicius.challenge.core.domain.auth.service.InsertAuthService
 import com.vinicius.challenge.core.domain.auth.service.LoginAuthService
+import com.vinicius.challenge.core.domain.client.factory.ClientFactory
 import com.vinicius.challenge.core.domain.client.service.InsertClientService
 import com.vinicius.challenge.entrypoint.auth.dto.AuthDto
 import com.vinicius.challenge.entrypoint.auth.dto.RegisterDto
