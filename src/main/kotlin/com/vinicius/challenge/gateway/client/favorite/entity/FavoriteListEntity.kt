@@ -1,5 +1,6 @@
-package com.vinicius.challenge.gateway.client.entity
+package com.vinicius.challenge.gateway.client.favorite.entity
 
+import com.vinicius.challenge.gateway.client.entity.ClientEntity
 import com.vinicius.challenge.gateway.product.ProductEntity
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -24,6 +25,6 @@ class FavoriteListEntity(
     val products: Set<ProductEntity> = HashSet(),
     @OneToOne
     @JoinColumn(name = "client_id")
-    val client: ClientEntity? = null,
+    var client: ClientEntity? = null,
     val enabled: Boolean
 )

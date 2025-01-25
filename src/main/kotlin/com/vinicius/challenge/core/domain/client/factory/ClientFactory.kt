@@ -1,4 +1,4 @@
-package com.vinicius.challenge.core.application.client.factory
+package com.vinicius.challenge.core.domain.client.factory
 
 import com.vinicius.challenge.core.domain.auth.Auth
 import com.vinicius.challenge.core.domain.client.Client

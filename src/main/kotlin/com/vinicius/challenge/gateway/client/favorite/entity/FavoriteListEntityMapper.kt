@@ -1,4 +1,4 @@
-package com.vinicius.challenge.gateway.client.entity
+package com.vinicius.challenge.gateway.client.favorite.entity
 
 import com.vinicius.challenge.core.domain.client.FavoriteList
 import com.vinicius.challenge.gateway.product.ProductEntityMapper
@@ -14,7 +14,7 @@ object FavoriteListEntityMapper {
         )
     }
 
-    fun toEntity(favoriteListEntity: FavoriteList): FavoriteListEntity {
+    fun toEntitySimple(favoriteListEntity: FavoriteList): FavoriteListEntity {
         return FavoriteListEntity(
             id = favoriteListEntity.id,
             name = favoriteListEntity.name,
