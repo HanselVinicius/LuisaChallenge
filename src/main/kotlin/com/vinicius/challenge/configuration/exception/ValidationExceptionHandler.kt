@@ -24,4 +24,9 @@ class ValidationExceptionHandler {
     fun handleSecurityException(ex: SecurityException): ResponseEntity<ExceptionDto> {
         return ResponseEntity(ExceptionDto(ex.message ?: "Unexpected error"), HttpStatus.FORBIDDEN)
     }
+
+    @ExceptionHandler(IllegalArgumentException::class)
+    fun handleIllegalArgumentException(ex: IllegalArgumentException): ResponseEntity<ExceptionDto> {
+        return ResponseEntity(ExceptionDto(ex.message ?: "Unexpected error"), HttpStatus.BAD_REQUEST)
+    }
 }
