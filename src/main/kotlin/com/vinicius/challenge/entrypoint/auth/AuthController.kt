@@ -34,7 +34,7 @@ class AuthController(
         client.auth.id = authInserted.id
         insertClientService.insertClient(client)
         val token = loginAuthService.login(registerDto.principal, registerDto.credentials)
-        return ResponseEntity.ok(TokenDto(token.token, token.client.name, null))
+        return ResponseEntity.ok(TokenDto(token.token, token.client.name, null, token.client.id!!))
     }
 
     @PostMapping("/authenticate")
@@ -44,6 +44,7 @@ class AuthController(
     ): ResponseEntity<TokenDto> {
         val auth = AuthControllerMapper.toDomain(authDto)
         val token = loginAuthService.login(auth.principal, auth.credentials)
-        return ResponseEntity.ok(TokenDto(token.token, token.client.name, token.client.favoriteList))
+        token.client.favoriteList ?: return ResponseEntity.ok(TokenDto(token.token, token.client.name, null, token.client.id!!))
+        return ResponseEntity.ok(TokenDto(token.token, token.client.name, token.client.favoriteList!!.id, token.client.id!!))
     }
 }

@@ -5,10 +5,12 @@ import com.vinicius.challenge.core.domain.auth.dto.LoginDto
 import com.vinicius.challenge.core.domain.auth.service.InsertAuthService
 import com.vinicius.challenge.core.domain.auth.service.LoginAuthService
 import com.vinicius.challenge.core.domain.client.Client
+import com.vinicius.challenge.core.domain.client.FavoriteList
 import com.vinicius.challenge.core.domain.client.service.InsertClientService
 import com.vinicius.challenge.entrypoint.auth.dto.AuthDto
 import com.vinicius.challenge.entrypoint.auth.dto.RegisterDto
 import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.any
 import org.mockito.kotlin.doReturn
@@ -67,5 +69,63 @@ class AuthControllerTest {
         // assert
         assertEquals(HttpStatus.OK, response.statusCode)
         assertEquals("token", response.body?.token)
+    }
+
+    @Test
+    fun shouldReturnTokenWithNoFavoriteListWhenClientHasNoFavoriteList() {
+        // Arrange
+        val principal = "vinicius@gmail.com"
+        val credentials = "credentials"
+        val authDto = AuthDto(principal, credentials)
+        val insertAuthService = mock<InsertAuthService>()
+
+        val loginAuthService = mock<LoginAuthService> {
+            on { login(principal, credentials) } doReturn LoginDto(
+                "token",
+                Client(1, "test", Auth(0, principal, credentials, true), null, true)
+            )
+        }
+
+        val insertClientService = mock<InsertClientService>()
+
+        val authController = AuthController(insertAuthService, loginAuthService, insertClientService)
+
+        // Act
+        val response = authController.login(authDto)
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.statusCode)
+        assertEquals("token", response.body?.token)
+        assertNull(response.body?.favoriteListId)
+    }
+
+    @Test
+    fun shouldReturnTokenWithFavoriteListWhenClientHasFavoriteList() {
+        // Arrange
+        val principal = "vinicius@gmail.com"
+        val credentials = "credentials"
+        val authDto = AuthDto(principal, credentials)
+
+        val favoriteList = FavoriteList(1L, "My Favorite List", "A list of my favorite products", emptySet(), null, true)
+
+        val loginAuthService = mock<LoginAuthService> {
+            on { login(principal, credentials) } doReturn LoginDto(
+                "token",
+                Client(1, "test", Auth(0, principal, credentials, true), favoriteList, true)
+            )
+        }
+
+        val insertAuthService = mock<InsertAuthService>()
+        val insertClientService = mock<InsertClientService>()
+
+        val authController = AuthController(insertAuthService, loginAuthService, insertClientService)
+
+        // Act
+        val response = authController.login(authDto)
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.statusCode)
+        assertEquals("token", response.body?.token)
+        assertEquals(favoriteList.id, response.body?.favoriteListId)
     }
 }

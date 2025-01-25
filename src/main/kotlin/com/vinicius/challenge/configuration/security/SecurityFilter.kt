@@ -38,7 +38,7 @@ class SecurityFilter(private val getSubjectService: GetSubjectService, private v
             if (it.isNullOrBlank()) {
                 return null
             }
-            it
+            it.replace("Bearer ", "")
         }
     }
 }
