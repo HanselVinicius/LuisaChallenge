@@ -5,6 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.7"
     id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
     kotlin("plugin.jpa") version "1.9.25"
+    id("jacoco")
 }
 
 group = "com.vinicius"
@@ -12,7 +13,7 @@ version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -77,4 +78,8 @@ ktlint {
     version = "0.47.1"
     verbose.set(true)
     ignoreFailures.set(false)
+}
+
+jacoco {
+    toolVersion = "0.8.7"
 }
