@@ -21,6 +21,6 @@ class ClientEntity(
     @OneToOne
     val auth: AuthEntity,
     @OneToOne(mappedBy = "client")
-    val favoriteListEntity: FavoriteListEntity?,
+    var favoriteListEntity: FavoriteListEntity?,
     val enabled: Boolean
 )
