@@ -4,9 +4,19 @@ import com.vinicius.challenge.core.domain.product.Product
 
 class FavoriteList(
     val id: Long?,
-    val name: String,
-    val description: String,
+    var name: String,
+    var description: String,
     val products: Set<Product>,
-    val client: Client? = null,
-    val enabled: Boolean
-)
+    var client: Client? = null,
+    var enabled: Boolean
+) {
+    fun editFavoriteList(favoriteList: FavoriteList) {
+        this.name = favoriteList.name
+        this.description = favoriteList.description
+        this.client = favoriteList.client
+    }
+
+    fun deleteFavoriteList() {
+        this.enabled = false
+    }
+}
