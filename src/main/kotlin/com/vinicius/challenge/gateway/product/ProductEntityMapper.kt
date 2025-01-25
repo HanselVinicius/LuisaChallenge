@@ -1,7 +1,7 @@
 package com.vinicius.challenge.gateway.product
 
 import com.vinicius.challenge.core.domain.product.Product
-import com.vinicius.challenge.gateway.client.entity.FavoriteListEntityMapper
+import com.vinicius.challenge.gateway.client.favorite.entity.FavoriteListEntityMapper
 
 object ProductEntityMapper {
 
@@ -13,7 +13,7 @@ object ProductEntityMapper {
             price = product.price,
             image = product.image,
             enabled = product.enabled,
-            favoriteListEntity = product.favoriteList?.let { FavoriteListEntityMapper.toEntity(it) }
+            favoriteListEntity = product.favoriteList?.let { FavoriteListEntityMapper.toEntitySimple(it) }
         )
     }
 
