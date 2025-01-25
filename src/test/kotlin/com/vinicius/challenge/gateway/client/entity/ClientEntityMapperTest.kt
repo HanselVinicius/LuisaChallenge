@@ -4,6 +4,7 @@ import com.vinicius.challenge.core.domain.auth.Auth
 import com.vinicius.challenge.core.domain.client.Client
 import com.vinicius.challenge.core.domain.client.FavoriteList
 import com.vinicius.challenge.gateway.auth.entity.AuthEntity
+import com.vinicius.challenge.gateway.client.favorite.entity.FavoriteListEntity
 import org.junit.jupiter.api.Test
 
 class ClientEntityMapperTest {

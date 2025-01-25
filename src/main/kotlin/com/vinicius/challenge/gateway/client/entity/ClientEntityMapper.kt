@@ -2,6 +2,7 @@ package com.vinicius.challenge.gateway.client.entity
 
 import com.vinicius.challenge.core.domain.client.Client
 import com.vinicius.challenge.gateway.auth.entity.AuthEntityMapper
+import com.vinicius.challenge.gateway.client.favorite.entity.FavoriteListEntityMapper
 
 object ClientEntityMapper {
     fun toEntity(client: Client): ClientEntity {
@@ -9,7 +10,7 @@ object ClientEntityMapper {
             id = client.id,
             name = client.name,
             auth = AuthEntityMapper.toEntity(client.auth),
-            favoriteListEntity = if (client.favoriteList != null) FavoriteListEntityMapper.toEntity(client.favoriteList) else null,
+            favoriteListEntity = if (client.favoriteList != null) FavoriteListEntityMapper.toEntitySimple(client.favoriteList!!) else null,
             enabled = client.enabled
         )
     }
