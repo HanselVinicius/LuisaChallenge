@@ -20,10 +20,9 @@ class SendEmailNotificationGatewayImplTest {
         val javaMailSender = mock<JavaMailSender>()
         val gateway = SendEmailNotificationGatewayImpl(javaMailSender)
 
-        SendEmailNotificationGatewayImpl::class.java.getDeclaredField("FROM").apply {
-            isAccessible = true
-            set(null, "test@domain.com")
-        }
+        val fromField = SendEmailNotificationGatewayImpl::class.java.getDeclaredField("from")
+        fromField.isAccessible = true
+        fromField.set(gateway, "test@domain.com")
         // act
         gateway.sendNotification(client, "test")
 

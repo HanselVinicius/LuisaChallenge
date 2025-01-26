@@ -12,15 +12,13 @@ class SendEmailNotificationGatewayImpl(
     private val javaMailSender: JavaMailSender
 ) : SendNotificationGateway {
 
-    companion object {
-        @Value("\${spring.mail.from}")
-        private lateinit var FROM: String
-    }
+    @Value("\${spring.mail.from}")
+    private lateinit var from: String
 
     override fun sendNotification(client: Client, message: String) {
         val notification = SimpleMailMessage()
         notification.setTo(client.auth.principal)
-        notification.from = FROM
+        notification.from = from
         notification.subject = "Notification"
         notification.text = message
 
