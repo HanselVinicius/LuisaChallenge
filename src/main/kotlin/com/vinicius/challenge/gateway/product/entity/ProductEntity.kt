@@ -1,4 +1,4 @@
-package com.vinicius.challenge.gateway.product
+package com.vinicius.challenge.gateway.product.entity
 
 import com.vinicius.challenge.gateway.client.favorite.entity.FavoriteListEntity
 import jakarta.persistence.Entity
@@ -16,7 +16,8 @@ import java.math.BigDecimal
 class ProductEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long? = null,
+    val productId: Long,
     val title: String,
     val price: BigDecimal,
     val description: String,
