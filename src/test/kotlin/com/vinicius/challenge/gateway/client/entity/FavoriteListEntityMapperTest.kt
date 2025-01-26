@@ -4,6 +4,7 @@ import com.vinicius.challenge.core.domain.client.FavoriteList
 import com.vinicius.challenge.core.domain.product.Product
 import com.vinicius.challenge.gateway.client.favorite.entity.FavoriteListEntity
 import com.vinicius.challenge.gateway.client.favorite.entity.FavoriteListEntityMapper
+import com.vinicius.challenge.gateway.product.entity.ProductEntity
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal
@@ -44,7 +45,7 @@ class FavoriteListEntityMapperTest {
     @Test
     fun shouldMapToDomainSimple() {
         // arrange
-        val productEntity = com.vinicius.challenge.gateway.product.ProductEntity(
+        val productEntity = ProductEntity(
             id = 1L,
             title = "Product 1",
             price = BigDecimal("100.00"),
