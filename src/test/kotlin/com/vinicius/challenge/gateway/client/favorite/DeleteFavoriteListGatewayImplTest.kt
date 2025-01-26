@@ -4,6 +4,7 @@ import com.vinicius.challenge.core.domain.auth.Auth
 import com.vinicius.challenge.core.domain.client.Client
 import com.vinicius.challenge.core.domain.client.FavoriteList
 import com.vinicius.challenge.gateway.client.favorite.entity.FavoriteListEntityRepository
+import com.vinicius.challenge.gateway.product.entity.ProductEntityRepository
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
@@ -30,10 +31,12 @@ class DeleteFavoriteListGatewayImplTest {
             enabled = true
         )
         val favoriteListEntityRepository = mock<FavoriteListEntityRepository>()
-        val deleteFavoriteListGateway = DeleteFavoriteListGatewayImpl(favoriteListEntityRepository)
+        val productEntityRepository = mock<ProductEntityRepository>()
+        val deleteFavoriteListGateway = DeleteFavoriteListGatewayImpl(favoriteListEntityRepository, productEntityRepository)
         // act
         deleteFavoriteListGateway.deleteFavoriteList(client)
         // assert
         verify(favoriteListEntityRepository).save(any())
+        verify(productEntityRepository).saveAll(setOf())
     }
 }
