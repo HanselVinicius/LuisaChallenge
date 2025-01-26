@@ -13,8 +13,8 @@ class FavoriteListControllerMapperTest {
     @Test
     fun shouldMapFavoriteListToFavoriteListReturnDtoCorrectly() {
         // Arrange
-        val product1 = Product(1L, "Product 1", BigDecimal(100), "Description 1", "image1.jpg", true, null)
-        val product2 = Product(2L, "Product 2", BigDecimal(150), "Description 2", "image2.jpg", true, null)
+        val product1 = Product(1L, 1L, "Product 1", BigDecimal(100), "Description 1", "image1.jpg", true, null)
+        val product2 = Product(1L, 2L, "Product 2", BigDecimal(150), "Description 2", "image2.jpg", true, null)
 
         val favoriteList = FavoriteList(
             id = 1L,
@@ -35,7 +35,7 @@ class FavoriteListControllerMapperTest {
         assertEquals(2, result.products.size)
 
         val productReturnDto = result.products.first()
-        assertEquals(product1.id, productReturnDto.id)
+        assertEquals(product1.productId, productReturnDto.id)
         assertEquals(product1.title, productReturnDto.name)
         assertEquals(product1.description, productReturnDto.description)
         assertEquals(product1.price.toDouble(), productReturnDto.price)
@@ -45,14 +45,14 @@ class FavoriteListControllerMapperTest {
     @Test
     fun shouldMapProductToProductReturnDtoCorrectly() {
         // Arrange
-        val product = Product(1L, "Product 1", BigDecimal(100), "Description 1", "image1.jpg", true, null)
+        val product = Product(1L, 1L, "Product 1", BigDecimal(100), "Description 1", "image1.jpg", true, null)
 
         // Act
         val result = FavoriteListControllerMapper.fromProduct(product)
 
         // Assert
         assertNotNull(result)
-        assertEquals(product.id, result.id)
+        assertEquals(product.productId, result.id)
         assertEquals(product.title, result.name)
         assertEquals(product.description, result.description)
         assertEquals(product.price.toDouble(), result.price)

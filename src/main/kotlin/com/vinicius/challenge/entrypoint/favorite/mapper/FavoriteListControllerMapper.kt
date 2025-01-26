@@ -17,7 +17,7 @@ object FavoriteListControllerMapper {
 
     fun fromProduct(product: Product): ProductReturnDto {
         return ProductReturnDto(
-            id = product.id,
+            id = product.productId,
             name = product.title,
             description = product.description,
             price = product.price.toDouble(),

@@ -1,7 +1,7 @@
 package com.vinicius.challenge.gateway.client.favorite.entity
 
 import com.vinicius.challenge.core.domain.client.FavoriteList
-import com.vinicius.challenge.gateway.product.ProductEntityMapper
+import com.vinicius.challenge.gateway.product.entity.ProductEntityMapper
 
 object FavoriteListEntityMapper {
     fun toDomainSimple(favoriteListEntity: FavoriteListEntity): FavoriteList {
@@ -9,7 +9,7 @@ object FavoriteListEntityMapper {
             id = favoriteListEntity.id,
             name = favoriteListEntity.name,
             description = favoriteListEntity.description,
-            products = favoriteListEntity.products.map { ProductEntityMapper.toDomainSimple(it) }.toSet(),
+            products = favoriteListEntity.products.map { ProductEntityMapper.toDomain(it) }.toSet(),
             enabled = favoriteListEntity.enabled
         )
     }
@@ -19,7 +19,16 @@ object FavoriteListEntityMapper {
             id = favoriteListEntity.id,
             name = favoriteListEntity.name,
             description = favoriteListEntity.description,
-            products = favoriteListEntity.products.map { ProductEntityMapper.toEntitySimple(it) }.toSet(),
+            products = favoriteListEntity.products.map { ProductEntityMapper.toEntity(it) }.toSet(),
+            enabled = favoriteListEntity.enabled
+        )
+    }
+
+    fun toEntityWithoutProducts(favoriteListEntity: FavoriteList): FavoriteListEntity {
+        return FavoriteListEntity(
+            id = favoriteListEntity.id,
+            name = favoriteListEntity.name,
+            description = favoriteListEntity.description,
             enabled = favoriteListEntity.enabled
         )
     }

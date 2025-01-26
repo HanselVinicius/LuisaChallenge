@@ -15,7 +15,7 @@ class FavoriteListEntityMapperTest {
     fun shouldMapToEntitySimpleSimple() {
         // arrange
         val product = Product(
-            id = 1L,
+            productId = 1L,
             title = "Product 1",
             price = BigDecimal("100.00"),
             description = "Product 1 description",
@@ -46,7 +46,7 @@ class FavoriteListEntityMapperTest {
     fun shouldMapToDomainSimple() {
         // arrange
         val productEntity = ProductEntity(
-            id = 1L,
+            productId = 1L,
             title = "Product 1",
             price = BigDecimal("100.00"),
             description = "Product 1 description",
@@ -72,5 +72,36 @@ class FavoriteListEntityMapperTest {
         assertEquals(favoriteListEntity.enabled, favoriteList.enabled)
         assertEquals(1, favoriteList.products.size)
         assertEquals("Product 1", favoriteList.products.first().title)
+    }
+
+    @Test
+    fun shouldMapToEntityWithoutProducts() {
+        // arrange
+        val product = Product(
+            productId = 1L,
+            title = "Product 1",
+            price = BigDecimal("100.00"),
+            description = "Product 1 description",
+            image = "image.jpg",
+            enabled = true
+        )
+
+        val favoriteList = FavoriteList(
+            id = 1L,
+            name = "Favorite List 1",
+            description = "Description of Favorite List 1",
+            products = setOf(product),
+            enabled = true
+        )
+
+        // act
+        val favoriteListEntity = FavoriteListEntityMapper.toEntityWithoutProducts(favoriteList)
+
+        // assert
+        assertEquals(favoriteList.id, favoriteListEntity.id)
+        assertEquals(favoriteList.name, favoriteListEntity.name)
+        assertEquals(favoriteList.description, favoriteListEntity.description)
+        assertEquals(favoriteList.enabled, favoriteListEntity.enabled)
+        assertEquals(0, favoriteListEntity.products.size)
     }
 }
