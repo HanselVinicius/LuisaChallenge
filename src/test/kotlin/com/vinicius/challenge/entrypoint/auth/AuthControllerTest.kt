@@ -47,6 +47,8 @@ class AuthControllerTest {
         assertEquals(HttpStatus.OK, response.statusCode)
 
         assertNotNull(authInserted.id)
+        assertNotNull(response.body?.clientName)
+        assertNotNull(response.body?.clientId)
     }
 
     @Test
