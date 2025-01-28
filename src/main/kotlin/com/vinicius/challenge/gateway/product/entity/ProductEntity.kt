@@ -24,6 +24,6 @@ class ProductEntity(
     val image: String,
     @ManyToOne
     @JoinColumn(name = "favorite_list_id")
-    private val favoriteListEntity: FavoriteListEntity?,
+    var favoriteListEntity: FavoriteListEntity?,
     val enabled: Boolean
 )

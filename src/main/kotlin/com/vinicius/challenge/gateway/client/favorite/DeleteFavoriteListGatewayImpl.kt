@@ -15,6 +15,8 @@ class DeleteFavoriteListGatewayImpl(
     DeleteFavoriteListGateway {
     override fun deleteFavoriteList(client: Client) {
         val clientEntity = ClientEntityMapper.toEntity(client)
+        clientEntity.favoriteListEntity!!.client = clientEntity
+        clientEntity.favoriteListEntity!!.products.forEach { it.favoriteListEntity = clientEntity.favoriteListEntity }
         favoriteListEntityRepository.save(clientEntity.favoriteListEntity!!)
         productEntityRepository.saveAll(clientEntity.favoriteListEntity!!.products)
     }
