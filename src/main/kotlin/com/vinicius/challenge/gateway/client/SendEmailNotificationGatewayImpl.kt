@@ -5,9 +5,7 @@ import com.vinicius.challenge.core.domain.client.Client
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.mail.SimpleMailMessage
 import org.springframework.mail.javamail.JavaMailSender
-import org.springframework.stereotype.Component
 
-@Component
 class SendEmailNotificationGatewayImpl(
     private val javaMailSender: JavaMailSender
 ) : SendNotificationGateway {
