@@ -77,6 +77,6 @@ MAIL_PASS=pass
 MAIL_FROM=email@email.com
 ```
 
-Certifique-se de ter o banco de dados corretamente configurado e rodando.
-Versões do java 21
-Em seguida, execute a aplicação normalmente.
+- Certifique-se de ter o banco de dados corretamente configurado e rodando.
+- Versão do java: 21
+- Em seguida, execute a aplicação normalmente.
