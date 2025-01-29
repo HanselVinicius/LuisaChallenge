@@ -1,7 +1,6 @@
 package com.vinicius.challenge.gateway.client
 
 import com.vinicius.challenge.core.domain.auth.Auth
-import com.vinicius.challenge.core.domain.client.Client
 import com.vinicius.challenge.gateway.auth.entity.AuthEntity
 import com.vinicius.challenge.gateway.client.entity.ClientEntity
 import com.vinicius.challenge.gateway.client.entity.ClientEntityRepository
@@ -31,7 +30,7 @@ class GetClientByIdGatewayImplTest {
             favoriteLists = mutableListOf(),
             enabled = true
         )
-        val auth = Auth(1, "principal", "credentials", true)
+        Auth(1, "principal", "credentials", true)
 
         val clientEntityRepository = mock<ClientEntityRepository> {
             whenever(it.findById(clientId)).thenReturn(Optional.of(clientEntity))
