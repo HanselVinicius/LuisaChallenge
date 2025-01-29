@@ -31,7 +31,7 @@ class FavoriteListEntityMapperTest {
         )
 
         // act
-        val favoriteListEntity = FavoriteListEntityMapper.toEntitySimple(favoriteList)
+        val favoriteListEntity = FavoriteListEntityMapper.toEntitySimple(favoriteList).first()
 
         // assert
         assertEquals(favoriteList.id, favoriteListEntity.id)

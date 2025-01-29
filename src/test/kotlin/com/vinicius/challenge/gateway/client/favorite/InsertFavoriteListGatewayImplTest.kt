@@ -32,7 +32,7 @@ class InsertFavoriteListGatewayImplTest {
         )
         val favoriteListEntity = FavoriteListEntityMapper.toEntitySimple(favoriteList)
         val favoriteListEntityRepository = mock<FavoriteListEntityRepository> {
-            onGeneric { save(any()) } doReturn favoriteListEntity
+            onGeneric { save(any()) } doReturn favoriteListEntity.first()
         }
         val insertFavoriteListGatewayImpl = InsertFavoriteListGatewayImpl(favoriteListEntityRepository)
         // act

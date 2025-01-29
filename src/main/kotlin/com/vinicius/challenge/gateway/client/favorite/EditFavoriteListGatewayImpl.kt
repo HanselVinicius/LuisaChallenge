@@ -12,8 +12,8 @@ class EditFavoriteListGatewayImpl(private val favoriteListEntityRepository: Favo
     override fun editFavoriteList(favoriteList: FavoriteList): FavoriteList {
         val favoriteListEntity = FavoriteListEntityMapper.toEntitySimple(favoriteList)
         val clientEntity = ClientEntityMapper.toEntity(favoriteList.client!!)
-        favoriteListEntity.client = clientEntity
-        val editedFavoriteList = favoriteListEntityRepository.save(favoriteListEntity)
+        favoriteListEntity.first().client = clientEntity
+        val editedFavoriteList = favoriteListEntityRepository.save(favoriteListEntity.first())
         return FavoriteListEntityMapper.toDomainSimple(editedFavoriteList)
     }
 }
