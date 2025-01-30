@@ -54,7 +54,8 @@ ex:
 ```
 DB_HOST=mysql
 ```
-AVISO!!! O CONTEINER DO APP PODE DEMORAR UM POUCO PARA SER CONSTRUIDO
+- AVISO!!! O CONTEINER DO APP PODE DEMORAR UM POUCO PARA SER CONSTRUIDO
+- para casos de erro ao subir o front e o backend recomendo apagar as imagens e apagar as pastas node_modules e .next
 
 # 4.2. Rodando na Sua Máquina Local
 Alternativamente, é possível rodar o projeto diretamente na sua máquina. Para isso, você precisará ter o banco de dados configurado, seja localmente ou em um container.
