@@ -54,7 +54,7 @@ ex:
 ```
 DB_HOST=mysql
 ```
-OBS: O container pode demorar um pouco para ser construído na primeira execução.
+OBS: Deixar tanto o frontend quanto o Backend no mesmo diretório para que funcione com êxito e o container pode demorar um pouco para ser construído na primeira execução.
 
 # 4.2. Rodando na Sua Máquina Local
 Alternativamente, é possível rodar o projeto diretamente na sua máquina. Para isso, você precisará ter o banco de dados configurado, seja localmente ou em um container.
