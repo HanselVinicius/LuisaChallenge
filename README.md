@@ -1,5 +1,5 @@
 # Desafio Técnico LuizaLabs
-Este repositório contém a implementação do Desafio Técnico proposto pela LuizaLabs. O desafio visa testar habilidades de desenvolvimento utilizando boas práticas de arquitetura e ferramentas modernas.
+Este repositório contém a implementação do Desafio Técnico proposto pela LuizaLabs.
 
 ## 1. Introdução
 A linguagem de programação escolhida para o desenvolvimento deste projeto foi Kotlin, devido à sua simplicidade, expressividade e eficácia, proporcionando um código mais conciso e fácil de manter.
