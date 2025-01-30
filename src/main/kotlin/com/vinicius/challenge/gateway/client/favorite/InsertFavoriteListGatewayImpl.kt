@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component
 class InsertFavoriteListGatewayImpl(private val favoriteListEntityRepository: FavoriteListEntityRepository) : InsertFavoriteListGateway {
     override fun insertFavoriteList(client: Client): FavoriteList {
         val clientEntity = ClientEntityMapper.toEntity(client)
-        clientEntity.favoriteListEntity!!.client = clientEntity
-        return FavoriteListEntityMapper.toDomainSimple(favoriteListEntityRepository.save(clientEntity.favoriteListEntity!!))
+        clientEntity.favoriteLists.first().client = clientEntity
+        return FavoriteListEntityMapper.toDomainSimple(favoriteListEntityRepository.save(clientEntity.favoriteLists.first()))
     }
 }

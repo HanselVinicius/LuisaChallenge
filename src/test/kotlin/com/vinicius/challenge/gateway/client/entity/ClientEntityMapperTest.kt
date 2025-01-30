@@ -29,7 +29,7 @@ class ClientEntityMapperTest {
         // arrange
         val authEntity = AuthEntity(1, "principal", "credentials", true)
         val favoriteListEntity = FavoriteListEntity(1, "lista", "descricao", emptySet(), null, true)
-        val clientEntity = ClientEntity(1, "name", authEntity, favoriteListEntity, true)
+        val clientEntity = ClientEntity(1, "name", authEntity, mutableListOf(favoriteListEntity), true)
 
         // act
         val client = ClientEntityMapper.toDomain(clientEntity)

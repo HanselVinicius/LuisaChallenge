@@ -22,7 +22,7 @@ class FindClientByPrincipalGatewayImplTest {
             id = 1,
             name = "Test Client",
             auth = authEntity,
-            favoriteListEntity = null,
+            favoriteLists = mutableListOf(),
             enabled = true
         )
 

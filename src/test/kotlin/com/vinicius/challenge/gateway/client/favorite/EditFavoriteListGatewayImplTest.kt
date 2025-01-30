@@ -36,9 +36,9 @@ class EditFavoriteListGatewayImplTest {
         favoriteList.client = client
         val favoriteListEntity = FavoriteListEntityMapper.toEntitySimple(favoriteList)
         val clientEntity = ClientEntityMapper.toEntity(client)
-        favoriteListEntity.client = clientEntity
+        favoriteListEntity.first().client = clientEntity
         val favoriteListEntityRepository = mock<FavoriteListEntityRepository> {
-            onGeneric { save(any()) } doReturn favoriteListEntity
+            onGeneric { save(any()) } doReturn favoriteListEntity.first()
         }
 
         // Instancia o gateway

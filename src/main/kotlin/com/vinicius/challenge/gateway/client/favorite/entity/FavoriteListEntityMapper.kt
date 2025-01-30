@@ -14,13 +14,15 @@ object FavoriteListEntityMapper {
         )
     }
 
-    fun toEntitySimple(favoriteListEntity: FavoriteList): FavoriteListEntity {
-        return FavoriteListEntity(
-            id = favoriteListEntity.id,
-            name = favoriteListEntity.name,
-            description = favoriteListEntity.description,
-            products = favoriteListEntity.products.map { ProductEntityMapper.toEntity(it) }.toSet(),
-            enabled = favoriteListEntity.enabled
+    fun toEntitySimple(favoriteListEntity: FavoriteList): MutableList<FavoriteListEntity> {
+        return mutableListOf(
+            FavoriteListEntity(
+                id = favoriteListEntity.id,
+                name = favoriteListEntity.name,
+                description = favoriteListEntity.description,
+                products = favoriteListEntity.products.map { ProductEntityMapper.toEntity(it) }.toSet(),
+                enabled = favoriteListEntity.enabled
+            )
         )
     }
 

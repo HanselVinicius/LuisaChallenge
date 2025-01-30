@@ -10,7 +10,7 @@ object ClientEntityMapper {
             id = client.id,
             name = client.name,
             auth = AuthEntityMapper.toEntity(client.auth),
-            favoriteListEntity = if (client.favoriteList != null) FavoriteListEntityMapper.toEntitySimple(client.favoriteList!!) else null,
+            favoriteLists = if (client.favoriteList != null) FavoriteListEntityMapper.toEntitySimple(client.favoriteList!!) else mutableListOf(),
             enabled = client.enabled
         )
     }
@@ -20,7 +20,7 @@ object ClientEntityMapper {
             id = clientEntity.id,
             name = clientEntity.name,
             auth = AuthEntityMapper.toDomain(clientEntity.auth),
-            favoriteList = if (clientEntity.favoriteListEntity != null) FavoriteListEntityMapper.toDomainSimple(clientEntity.favoriteListEntity!!) else null,
+            favoriteList = if (clientEntity.favoriteLists.size > 0) FavoriteListEntityMapper.toDomainSimple(clientEntity.favoriteLists.first()) else null,
             enabled = clientEntity.enabled
         )
     }
