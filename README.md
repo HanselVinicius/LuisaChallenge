@@ -25,9 +25,6 @@ Se quiser aprofundar mais nesses conceitos, recomendamos a leitura dos seguintes
 
 ---
 
-Criando uma aplicação modular muito além do Clean Architecture
-Descomplicando a Clean Architecture
-
 ## 3. Ferramentas Utilizadas
 Para o desenvolvimento do projeto, foram utilizadas as seguintes ferramentas:
 

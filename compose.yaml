@@ -9,7 +9,6 @@ services:
     volumes:
       - ./src/main:/app/src/main
     restart: always
-    platform: linux/arm64
     networks:
       - challenge_network
     depends_on:
@@ -25,7 +24,6 @@ services:
       - 'MARIADB_USER=myuser'
     ports:
       - '3306:3306'
-    platform: linux/arm64
     networks:
         - challenge_network
     healthcheck:
@@ -43,7 +41,6 @@ services:
       volumes:
         - ../luisaChalengeFront:/app
       command: sh -c "npm install && npm run dev"
-      platform: linux/arm64
       environment:
         - NODE_ENV=development
       networks:
