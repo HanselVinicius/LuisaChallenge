@@ -54,7 +54,7 @@ ex:
 ```
 DB_HOST=mysql
 ```
-AVISO!!! O CONTEINER DO APP PODE DEMORAR UM POUCO PARA SER CONSTRUIDO
+OBS: O container pode demorar um pouco para ser construído na primeira execução.
 
 # 4.2. Rodando na Sua Máquina Local
 Alternativamente, é possível rodar o projeto diretamente na sua máquina. Para isso, você precisará ter o banco de dados configurado, seja localmente ou em um container.
