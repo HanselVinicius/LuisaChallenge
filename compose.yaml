@@ -55,7 +55,9 @@ services:
       - ../luisaChalengeFront:/app
     command: sh -c "npm install && npm run dev"
     environment:
-      - NODE_ENV=development
+    - NODE_ENV=development
+    - NEXT_PUBLIC_PRODUCTS_API_URL=https://fakestoreapi.com
+    - NEXT_PUBLIC_API_URL=http://app:8080/
     networks:
       - challenge_network
 
